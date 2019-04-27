@@ -61,4 +61,10 @@ public class AidlFragment extends BaseFragment {
         Intent intent = new Intent(getActivity(), RemoteService.class);
         getActivity().bindService(intent,mServiceConnection, Context.BIND_AUTO_CREATE);
     }
+
+    @Override
+    public void onDestroy() {
+        getActivity().unbindService(mServiceConnection);
+        super.onDestroy();
+    }
 }

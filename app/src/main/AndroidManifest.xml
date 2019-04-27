@@ -22,6 +22,11 @@
             android:process=":remote"
             />
 
+        <service
+            android:name=".ipc.BookManagerService"
+            android:process=":remote"
+            />
+
     </application>
 
 </manifest>
