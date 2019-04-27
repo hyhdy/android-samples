@@ -6,6 +6,9 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.hyh.base_lib.utils.AppUtils;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -28,6 +31,8 @@ public class BookManagerService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        String uid = AppUtils.getUid(this);
+        Log.d("hyh","BookManagerService: onCreate: uid="+uid);
         mBookList.add(new Book(1,"Android"));
         mBookList.add(new Book(2,"Ios"));
     }

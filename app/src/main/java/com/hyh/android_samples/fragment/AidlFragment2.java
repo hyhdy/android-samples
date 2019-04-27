@@ -15,6 +15,7 @@ import com.hyh.android_samples.ipc.BookManagerService;
 import com.hyh.android_samples.ipc.IBookManager;
 import com.hyh.annotation.InjectFragment;
 import com.hyh.base_lib.BaseFragment;
+import com.hyh.base_lib.utils.AppUtils;
 
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class AidlFragment2 extends BaseFragment {
 
     @Override
     protected void initViews(View rootView) {
+        String uid = AppUtils.getUid(getContext());
+        Log.d("hyh","AidlFragment2: initViews: uid="+uid);
         Intent intent = new Intent(getActivity(), BookManagerService.class);
         getActivity().bindService(intent,mServiceConnection, Context.BIND_AUTO_CREATE);
     }
