@@ -28,4 +28,6 @@ dependencies {
     implementation project(':annotation')
     annotationProcessor project(':ioc_compile')
     implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }

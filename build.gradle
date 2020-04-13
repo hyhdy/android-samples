@@ -3,6 +3,7 @@
 buildscript {
     
     repositories {
+        mavenCentral()
         google()
         jcenter()
     }
@@ -17,6 +18,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
         google()
         jcenter()
     }
@@ -27,11 +29,11 @@ task clean(type: Delete) {
 }
 
 ext {
-    vcompileSdkVersion = 26
+    vcompileSdkVersion = 27
     versionCode = 1
     versionName = "1.0"
-    vtargetSdkVersion = 26
+    vtargetSdkVersion = 27
     vminSdkVersion = 16
-    vSupport_appcompat_v7 = "com.android.support:appcompat-v7:26.0.0"
-    vSupport_recyclerview_v7 = "com.android.support:recyclerview-v7:26.0.0"
+    vSupport_appcompat_v7 = "com.android.support:appcompat-v7:27.0.0"
+    vSupport_recyclerview_v7 = "com.android.support:recyclerview-v7:27.0.0"
 }
