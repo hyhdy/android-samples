@@ -31,3 +31,72 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }
+
+//gradle task学习测试
+//gradle编译的三个阶段，Initialization -> Configuration -> Execution
+
+task joba{
+    //该闭包下的代码在Configuration阶段执行
+    println("joba config start")
+
+    doFirst{
+        //该闭包下的代码在Execution阶段开始时执行
+        println("joba execute start")
+    }
+    doLast{
+        //该闭包下的代码在Execution阶段结束时执行
+        println("joba execute end")
+    }
+    println("joba config end")
+}
+
+task jobb{
+    // 依赖 joba task 先执行
+    dependsOn("joba")
+    println("jobb config start")
+    doFirst {
+        println '我仅会在 jobb 的 Execution 阶段执行'
+    }
+    doLast {
+        println '我仅会在 jobb 的 Execution 阶段执行'
+    }
+    println("jobb config end")
+}
+
+task jobc {
+    println("jobc config start")
+    doFirst{
+        println("我是jobc，在执行第一个任务")
+    }
+    doLast{
+        println("我是jobc，在执行最后的任务")
+    }
+    println("jobc config end")
+}
+
+task jobaHook {
+    afterEvaluate {
+        tasks.findByName("joba").doFirst {
+            println 'hook afterEvaluate from joba'
+        }
+    }
+}
+
+task(hyh) {
+    println "i am hyh"
+}
+
+task(lmy).doLast {
+    println "start execute lmy"
+    haveFun()
+}
+
+def haveFun() {
+    println "have fun!"
+    System.out.println("have fun2!");
+    1
+    def file1 = new File("a.txt")
+    def file2 = new File("a.txt")
+    assert file1 == file2
+    assert !file1.is(file2)
+}
